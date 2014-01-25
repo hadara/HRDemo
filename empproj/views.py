@@ -7,11 +7,16 @@ from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm import aliased
 
 from .security import userfinder
-from .models import DBSession, Employee, Department, User, Group, Location, Region, Country, Job, Job_History, ITEMS_PER_PAGE, Summary
+from .models import (DBSession, Employee, Department, User, Group, Location, Region,
+                     Country, Job, Job_History, ITEMS_PER_PAGE, SummaryQuery)
 
-from .forms import DepartmentForm, EmployeeForm, LoginForm, UserForm, GroupForm, RegionForm, CountryForm, LocationForm, JobForm
+from .forms import (DepartmentForm, EmployeeForm, LoginForm, UserForm, GroupForm,
+                    RegionForm, CountryForm, LocationForm, JobForm)
 
 from paginate import Page
+
+import json
+from webob import Request
 
 
 @view_config(route_name='login', renderer='login.jinja2',
@@ -537,21 +542,28 @@ def group_edit(request):
 @view_config(route_name='summary_view', renderer='json', request_method=['GET'],
              permission='view')
 def summary_view(request):
-    query = Summary()
-    result = {}
-    import json
-    result['Summary'] = json.dumps([{'Region': r, 'Country': c, 'Location': l, 'Department': d, 'Employees': e}
-                          for r, c, l, d, e in query], indent=4, separators=(',', ': '))
-    return result
+    query = SummaryQuery()
+    result = [{'Region': r, 'Country': c, 'Location': lc+', '+ls, 'Department': d, 'Employees': e}
+                          for r, c, lc, ls, d, e in query]
+    #It is possible to dump alchemy response directly but there will be no keys
+    #result = json.dumps(query)
+    result_json = result
 
-@view_config(route_name='summary_rep', renderer='', request_method=['GET'],
+    return result_json
+
+@view_config(route_name='summary_rep', renderer='summary_r.jinja2', request_method=['GET'],
              permission='view')
 def summary_rep(request):
-    from webob import Request
+    #Imitating external REST service call
     r = Request.blank('http://localhost:6553/reports/summary')
-    response = r.send()
-    result = response.body
-    return Response(result)
+    resp = r.send()
+    #Response is decoded into str to support json.loads
+    result = resp.body.decode(encoding='UTF-8')
+    query_result = json.loads(result)
+    #When quotes were present in .body, we need double json.loads on string
+    #query_result = json.loads(json.loads(result))
+    return {'query_result': query_result,
+            'logged_in': authenticated_userid(request)}
 
 
 conn_err_msg = """\

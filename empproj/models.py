@@ -157,15 +157,16 @@ user_groups = Table('sec_user_groups', Base.metadata,
     Column('group', Integer, ForeignKey('sec_group.id'), primary_key=True))
 
 
-def Summary():
-    return DBSession.query(Region.region_name, Country.country_name, Location.city, Department.department_name,
+def SummaryQuery():
+    return DBSession.query(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name,
                                   func.count(Employee.employee_id)).\
                             filter(Region.region_id==Country.region_id).\
                             filter(Country.country_id==Location.country_id).\
                             filter(Location.location_id==Department.location_id).\
                             filter(Department.department_id==Employee.department_id).\
-                    group_by(Region.region_name, Country.country_name, Location.city, Department.department_name).\
-                    order_by(Region.region_name, Country.country_name, Location.city, Department.department_name).all()
+                    group_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
+                    order_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
+                    all()
 
 
 
