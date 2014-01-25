@@ -1,0 +1,40 @@
+{% extends "base.jinja2" %}
+{% block content %}
+
+    <h3>Location</h3>
+
+
+    <div class="well">
+
+        <form action="" method="post" name="LocationForm">
+
+          {% include 'form_error.jinja2' %}
+
+          <div class="form-group">
+            {{ form.street_address.label }}
+            {{ form.street_address() }}
+          </div>
+          <div class="form-group">
+            {{ form.postal_code.label }}
+            {{ form.postal_code() }}
+          </div>
+          <div class="form-group">
+            {{ form.city.label }}
+            {{ form.city() }}
+          </div>
+          <div class="form-group">
+            {{ form.state_province.label }}
+            {{ form.state_province() }}
+          </div>
+          <div class="form-group">
+            {{ form.country.label }}
+            {{ form.country() }}
+          </div>
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-default">Submit</button>
+         </div>
+        </form>
+
+    </div>
+{% endblock %}

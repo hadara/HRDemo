@@ -1,0 +1,39 @@
+{% extends "base.jinja2" %}
+{% block content %}
+
+    <h3>Locations</h3>
+
+    <a class="btn btn-default" href="{{ request.route_url('location_add') }}" role="button">Add Location</a>
+    <hr>
+
+    <table class="table">
+            <thead>
+                <tr>
+                  <th><a href="{{ request.route_url('location_view') + '?sort=hr_locations_street_address' }}">Street</a></th>
+                  <th><a href="{{ request.route_url('location_view') + '?sort=hr_locations_city' }}">City</a></th>
+                  <th><a href="{{ request.route_url('location_view') + '?sort=hr_locations_state_province' }}">State</a></th>
+                  <th><a href="{{ request.route_url('location_view') + '?sort=hr_locations_postal_code' }}">Post Code</a></th>
+                  <th><a href="{{ request.route_url('location_view') + '?sort=hr_countries_country_name' }}">Country</a></th>
+                </tr>
+            <tbody>
+                {% for location, country in locations %}
+                <tr>
+                    <td><a href="{{ request.route_url('location_edit', loc_id=location.location_id) }}">
+                            {{ location.street_address }} </a></td>
+                    <td> {{ location.city }} </td>
+                    <td> {{ location.state_province }} </td>
+                    <td> {{ location.postal_code }} </td>
+                    <td> {{ country.country_name }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    <ul class="pagination pagination-center">
+        <li>{{ locations.pager(format='$link_first$link_previous~2~$link_next$link_last',
+                curpage_attr={ 'class':'active' },
+                dotdot_attr={ 'class':'disabled' })|safe }}</li>
+    </ul>
+
+
+
+{% endblock %}

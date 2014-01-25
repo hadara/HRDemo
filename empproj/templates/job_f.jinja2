@@ -1,0 +1,32 @@
+{% extends "base.jinja2" %}
+{% block content %}
+
+    <h3>Job</h3>
+
+
+    <div class="well">
+
+        <form action="" method="post" name="JobForm">
+
+          {% include 'form_error.jinja2' %}
+
+          <div class="form-group">
+            {{ form.job_title.label }}
+            {{ form.job_title(size=30) }}
+          </div>
+          <div class="form-group">
+            {{ form.min_salary.label }}
+            {{ form.min_salary(size=8) }}
+          </div>
+          <div class="form-group">
+            {{ form.max_salary.label }}
+            {{ form.max_salary(size=8) }}
+          </div>
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-default">Submit</button>
+         </div>
+        </form>
+
+    </div>
+{% endblock %}

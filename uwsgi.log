@@ -1,0 +1,85 @@
+*** Starting uWSGI 2.0 (64bit) on [Mon Jan 20 22:07:42 2014] ***
+compiled with version: 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00) on 20 January 2014 21:20:20
+os: Darwin-11.4.2 Darwin Kernel Version 11.4.2: Thu Aug 23 16:26:45 PDT 2012; root:xnu-1699.32.7~1/RELEASE_I386
+nodename: macbook.lan
+machine: i386
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /Users/margus/Projects/tiger/EmpProj
+detected binary path: /Users/margus/Projects/tiger/pyramid/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 266
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 0.0.0.0:8080 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:53728 (port auto-assigned) fd 3
+Python version: 3.3.2 (v3.3.2:d047928ae3f6, May 13 2013, 13:52:24)  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f9c6140cd70
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145504 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+Loading paste environment: config:/Users/margus/Projects/tiger/EmpProj/production.ini
+WSGI app 0 (mountpoint='') ready in 6 seconds on interpreter 0x7f9c6140cd70 pid: 9575 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 9575)
+spawned uWSGI worker 1 (pid: 9578, cores: 1)
+spawned uWSGI http 1 (pid: 9579)
+*** Starting uWSGI 2.0 (64bit) on [Mon Jan 20 22:07:56 2014] ***
+compiled with version: 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00) on 20 January 2014 21:20:20
+os: Darwin-11.4.2 Darwin Kernel Version 11.4.2: Thu Aug 23 16:26:45 PDT 2012; root:xnu-1699.32.7~1/RELEASE_I386
+nodename: macbook.lan
+machine: i386
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /Users/margus/Projects/tiger/EmpProj
+detected binary path: /Users/margus/Projects/tiger/pyramid/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 266
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (0.0.0.0:8080).
+bind(): Address already in use [core/socket.c line 779]
+*** Starting uWSGI 2.0 (64bit) on [Mon Jan 20 22:08:40 2014] ***
+compiled with version: 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00) on 20 January 2014 21:20:20
+os: Darwin-11.4.2 Darwin Kernel Version 11.4.2: Thu Aug 23 16:26:45 PDT 2012; root:xnu-1699.32.7~1/RELEASE_I386
+nodename: macbook.lan
+machine: i386
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /Users/margus/Projects/tiger/EmpProj
+detected binary path: /Users/margus/Projects/tiger/pyramid/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 266
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (0.0.0.0:8080).
+bind(): Address already in use [core/socket.c line 779]
+[pid: 9578|app: 0|req: 1/1] 127.0.0.1 () {38 vars in 966 bytes} [Mon Jan 20 22:09:01 2014] GET / => generated 3719 bytes in 368 msecs (HTTP/1.1 200) 3 headers in 275 bytes (1 switches on core 0)
+[pid: 9578|app: 0|req: 2/2] 127.0.0.1 () {38 vars in 979 bytes} [Mon Jan 20 22:09:05 2014] GET /departments => generated 6428 bytes in 133 msecs (HTTP/1.1 200) 3 headers in 275 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0 (64bit) on [Mon Jan 20 22:12:48 2014] ***
+compiled with version: 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00) on 20 January 2014 21:20:20
+os: Darwin-11.4.2 Darwin Kernel Version 11.4.2: Thu Aug 23 16:26:45 PDT 2012; root:xnu-1699.32.7~1/RELEASE_I386
+nodename: macbook.lan
+machine: i386
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /Users/margus/Projects/tiger/EmpProj
+writing pidfile to ./uwsgi.pid
+detected binary path: /Users/margus/Projects/tiger/pyramid/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 266
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (0.0.0.0:8080).
+bind(): Address already in use [core/socket.c line 779]
+Mon Jan 20 22:13:27 2014 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
