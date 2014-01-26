@@ -543,13 +543,12 @@ def group_edit(request):
              permission='view')
 def summary_view(request):
     query = SummaryQuery()
+    #Serialize tuples into dicts
     result = [{'Region': r, 'Country': c, 'Location': lc+', '+ls, 'Department': d, 'Employees': e}
                           for r, c, lc, ls, d, e in query]
-    #It is possible to dump alchemy response directly but there will be no keys
+    #It is possible to dump sqlalchemy response directly but there will be no keys
     #result = json.dumps(query)
-    result_json = result
-
-    return result_json
+    return result
 
 @view_config(route_name='summary_rep', renderer='summary_r.jinja2', request_method=['GET'],
              permission='view')
