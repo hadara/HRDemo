@@ -18,7 +18,7 @@ requires = [
     'WTForms==1.0.5',
     'paginate==0.4.1',
     'waitress==0.8.7',
-    'uWSGI==2.0'
+    #'uWSGI==2.0'
     ]
 
 setup(name='EmpProj',

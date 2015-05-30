@@ -48,5 +48,6 @@ empproj/templates/location_r.jinja2
 empproj/templates/login.jinja2
 empproj/templates/region_f.jinja2
 empproj/templates/region_r.jinja2
+empproj/templates/summary_r.jinja2
 empproj/templates/user_f.jinja2
 empproj/templates/user_r.jinja2
