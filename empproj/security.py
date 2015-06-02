@@ -6,9 +6,9 @@ from pyramid.security import (
 from .models import DBSession, User, Group
 
 
-USERS = {'editor':'editor',
-          'viewer':'viewer'}
-GROUPS = {'editor':['group:editors']}
+#USERS = {'editor':'editor',
+#          'viewer':'viewer'}
+#GROUPS = {'editor':['group:editors']}
 
 # Validate user login in view
 def userfinder(userid, password):

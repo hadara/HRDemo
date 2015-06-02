@@ -60,7 +60,7 @@ def logout(request):
 @view_config(route_name='home', renderer='home.jinja2', request_method='GET',
              permission='view')
 def home(request):
-    return {'project': 'My Ninja',
+    return {'project': 'My Demo',
             'logged_in': authenticated_userid(request)}
 
 
@@ -398,7 +398,7 @@ def location_add(request):
                       city = form.city.data,
                       postal_code = form.postal_code.data,
                       state_province = form.state_province.data,
-                      country = form.country.data.country)
+                      country = form.country.data)
         DBSession.add(loc)
         request.session.flash('Location Added!')
         return HTTPFound(location=request.route_url('location_view'))
@@ -416,7 +416,7 @@ def location_edit(request):
         location.city = form.city.data
         location.postal_code = form.postal_code.data
         location.state_province = form.state_province.data
-        location.country = form.country.data.country
+        location.country = form.country.data
         DBSession.add(location)
         request.session.flash('Location Updated!')
         return HTTPFound(location=request.route_url('location_view'))
@@ -553,8 +553,8 @@ def summary_view(request):
 @view_config(route_name='summary_rep', renderer='summary_r.jinja2', request_method=['GET'],
              permission='view')
 def summary_rep(request):
-    #Imitating external REST service call
-    r = Request.blank('http://localhost:6553/reports/summary')
+    #Imitating external REST service call - Peaks olema request.registry.settings konfis uri
+    r = Request.blank('http://localhost:6554/reports/summary')
     resp = r.send()
     #Response is decoded into str to support json.loads
     result = resp.body.decode(encoding='UTF-8')

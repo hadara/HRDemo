@@ -158,15 +158,25 @@ user_groups = Table('sec_user_groups', Base.metadata,
 
 
 def SummaryQuery():
-    return DBSession.query(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name,
-                                  func.count(Employee.employee_id)).\
-                            filter(Region.region_id==Country.region_id).\
-                            filter(Country.country_id==Location.country_id).\
-                            filter(Location.location_id==Department.location_id).\
-                            filter(Department.department_id==Employee.department_id).\
-                    group_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
-                    order_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
-                    all()
+    return DBSession.execute("""select r.region_name, c.country_name, l.city, l.street_address, d.department_name, count(e.employee_id)
+                                from hr_regions r
+                                left join hr_countries AS c on c.region_id = r.region_id
+                                left join hr_locations AS l on l.country_id=c.country_id
+                                left join hr_departments AS d on d.location_id=l.location_id
+                                left join hr_employees AS e on e.department_id=d.department_id
+                            group by r.region_name, c.country_name, l.city, l.street_address, d.department_name
+                            order by r.region_name, c.country_name, l.city, l.street_address, d.department_name""").fetchall()
+
+
+#DBSession.query(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name,
+#                                  func.count(Employee.employee_id)).\
+#                            filter(Region.region_id==Country.region_id).\
+#                            filter(Country.country_id==Location.country_id).\
+#                            filter(Location.location_id==Department.location_id).\
+#                            filter(Department.department_id==Employee.department_id).\
+#                    group_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
+#                    order_by(Region.region_name, Country.country_name, Location.city, Location.street_address, Department.department_name).\
+#                    all()
 
 
 
