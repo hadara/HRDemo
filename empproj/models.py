@@ -182,6 +182,3 @@ def SummaryQuery():
 
 #Pagination page row count
 ITEMS_PER_PAGE = 5
-
-# u=DBSession.query(User).filter(User.groups.any(groupname='Editor')).all()
-# g=DBSession.query(Group).filter(Group.users.any(username='margus')).all()
