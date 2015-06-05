@@ -7,18 +7,17 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
-    'pyramid==1.4.5',
-    'transaction==1.4.1',
-    'pyramid_tm==0.7',
-    'pyramid_debugtoolbar==1.0.9',
-    'zope.sqlalchemy==0.7.3',
-    'SQLAlchemy==0.8.3',
-    'psycopg2==2.5.1',
-    'pyramid_jinja2==1.9',
-    'WTForms==1.0.5',
-    'paginate==0.4.1',
-    'waitress==0.8.7',
-    #'uWSGI==2.0'
+    'pyramid==1.6a1',
+    'transaction==1.4.4',
+    'pyramid_tm==0.12',
+    'pyramid_debugtoolbar==2.4',
+    'zope.sqlalchemy==0.7.6',
+    'SQLAlchemy==0.9.8',
+    'psycopg2==2.5.4',
+    'pyramid_jinja2==2.5',
+    'WTForms==2.0.2',
+    'paginate==0.4.3',
+    'waitress==0.8.9',
     ]
 
 setup(name='EmpProj',
