@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Index, Integer, String, ForeignKey, Text, Table, Date, DateTime, func
+from sqlalchemy import Column, Index, Integer, BigInteger, String, ForeignKey, Text, Table, Date, DateTime, func
 
 from sqlalchemy.orm import relationship, backref, scoped_session, sessionmaker
 
@@ -62,7 +62,7 @@ class Employee(Base):
     phone_number = Column(String(20))
     hire_date = Column(Date, nullable = False)
     end_date = Column(Date, nullable = True)
-    salary = Column(Integer(8,2))
+    salary = Column(BigInteger)
 
     job_id = Column(Integer, ForeignKey('hr_jobs.job_id'))
     job = relationship('Job', backref='hr_employees')
@@ -105,8 +105,8 @@ class Job(Base):
     __tablename__ = 'hr_jobs'
     job_id = Column(Integer, primary_key = True)
     job_title = Column(String(30))
-    min_salary = Column(Integer(8))
-    max_salary = Column(Integer(8))
+    min_salary = Column(BigInteger)
+    max_salary = Column(BigInteger)
     employees = relationship(Employee)
     def __repr__(self):
         return '<Job %r>' % (self.job_title)
